@@ -23,4 +23,4 @@
 
 
 /* attributes for variables declaration */
-/* __attribute__(section(STR("ExtFlashSection"))) __attribute__(aligned(4)) */
+/* __attribute__((section("ExtFlashSection"))) __attribute__((aligned(4))) */
