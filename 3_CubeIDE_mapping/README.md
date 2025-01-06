@@ -10,11 +10,6 @@ _**<br>Below the English text you'll find the Italian version</i>**_
 <br>
 <br>
 
-<br>generation C declaration file from a png
-<br>
-
-https://notisrac.github.io/FileToCArray/
-
 
 
 <br><i><b>
