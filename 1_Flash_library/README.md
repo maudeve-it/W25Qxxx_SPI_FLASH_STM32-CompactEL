@@ -4,34 +4,55 @@ _**<br>Below the English text you'll find the Italian version</i>**_
 <br>
 <br>
 
-# 1) Using the W25QXXXX Winbond Flash QuadSPI library
-Here you'll find documentation about handling a flash memory chip connected to a uC QuadSPI port
+# 1) Using the W25QXXXX Winbond SPI Flash chip library
+Here you'll find documentation about handling a flash memory chip connected to a uC SPI port
 <ul>
 <li><b>(1)	in CubeMX</b>:<br>
-creating your STM32 project, enable QuadSPI.<br>
-QuadSPI must be set this way:<br><br>
+creating your STM32 project assign an SPI port to the communication with the Flash memory.<br>
+SPI must be set this way:<br><br>
 
-|Mode|
-|---|
-|Enable QuadSPI mode and banks needed|
-
-Library handles single/dual/quad communication mode and single/dual bank
-
-|Parameter setting|value|
+|Mode|value|
 |---|---|
-|Device type|Flash|
-|Clock Mode|Low|
+|mode|Full-Duplex Master|
+|NSS|Disable|
 
-All the other parameter as per project requirement (see video https://youtu.be/_ds4ABvxQY8 for details)
 
+|Parameter|value|
+|---|---|
+|Frame format|Motorola|
+|Data size|8 bit|
+|First bit|MSB first|	
+|CPOL|low|
+|CPHA|1 Edge|
+|CRC calculation|disabled|
+|NSS type|Output Sw|
+
+SPI pins must have these names:
+<ul>
+<b>
+FLASH_SCK<br>
+FLASH_MISO<br>
+FLASH_MOSI<br>
+</b>
+</ul>
+
+<br>
+Setup a pin as GPIO_Output:</b><br>
+
+|pinname to assign|output level|mode|pull-up/down|
+|---|---|---|---|
+|FLASH_CS|high|Output push pull|No pull-up/down|
+
+Pin speed affects SPI port: rise (step by step from LOW to VERY HIGH) pins speed if you see uC cannot handle the defined communication speed (more information on your uC datasheet).<br>
 </li>
+
 <br>
 <li>
 <b>(2)	in CubeIDE</b>:<br>
 after saving CubeMX and after C code generation:<br>
 <ul>
-copy into the "include" folder (core\inc) <i>z_qflash_W25QXXX.h</i> file<br>
-copy into the "source" folder (core\src) <i>z_qflash_W25QXXX.c</i> file <br>
+copy into the "include" folder (core\inc) <i>z_flash_W25QXXX.h</i> file<br>
+copy into the "source" folder (core\src) <i>z_flash_W25QXXX.c</i> file <br>
 </ul>
 </li>
 <br>
@@ -46,7 +67,7 @@ and edit <i>/* USER CODE BEGIN Includes */</i> segment, this way:
 ...
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "z_qflash_W25QXXX.h"
+#include "z_flash_W25QXXX.h"
 /* USER CODE END Includes */
 ...
 ```
@@ -58,10 +79,10 @@ edit file <i>z_flash_W25QXXX.h</i> this way:<br>
 <ul>
 <li>
 	into segment <b>STEP1</b>:<br>
-		register QuadSPI used<br>
+		register SPI used, updating the two lines (hspi1/SPI1, hspi2/SPI2, ...)<br>
 <li>
 	into segment <b>STEP2</b>:<br>
-        Specify if using QuadSPI in either Memory Mapped Mode or no<br>
+        no changes: currently available only "Fast Mode"<br>
 <li>
     into segment <b>STEP3</b>:<br>
         no changes: currently available only "Polling Mode"<br>
@@ -80,13 +101,13 @@ edit file <i>z_flash_W25QXXX.h</i> this way:<br>
 </ul>
 </li>
 </ul>
-FLash library needs to be initialized: before entering in main loop you must call Flash_Init() function checking flash presence and initializing it:<br>
+FLash library neets to be initialized: before entering in main loop you must call Flash_Init() function checking flash presence and initializing it:<br>
 
 ```sh
 (main.c)
 ...
   /* USER CODE BEGIN 2 */
- 	if (QFlash_Init()!=HAL_OK) {};   // if Flash_Init() returns 0 (any flash error) do not proceed
+ 	if (!Flash_Init()) {};   // if Flash_Init() returns 0 (any flash error) do not proceed
   /* USER CODE END 2 */
 ...
 ```
@@ -114,25 +135,44 @@ Having done what above shown, you can use all functions of the library handling 
 
 
 
-# Usare la libreria QuadSPI per le Flash W25Q di Winbond 
-Qui trovi le informazioni su come gestire una memoria flash connessa alla porta QuadSPI del uC
+# Gestire un chip SPI Flash W25Q di Winbond con questa libreria
+Qui trovi le informazioni su come gestire una memoria flash connessa alla porta SPI del uC
 <ul>
 <li><b>(1)	in CubeMX</b>:<br>
-durante la creazione del progetto, attivare pa porta QuadSPI.<br>
-la porta QuadSPI deve essere configurata così:<br><br>
+durante la creazione del progetto, assegnare una porta SPI per la comunicazione con la memoria Flash.<br>
+la porta SPI deve essere configurata così:<br><br>
 
-|Mode|
-|---|
-|attiva il modo di comunicazione e i banchi richiesti|
-
-La libreria gestisce la comunicazione in single/dual/quad mode e in single/dual bank
-
-|Parameter setting|value|
+|Mode|value|
 |---|---|
-|Device type|Flash|
-|Clock Mode|Low|
+|mode|Full-Duplex Master|
+|NSS|Disable|
 
-Gli altri parametri secondo le esigenze del progetto (vedi https://youtu.be/_ds4ABvxQY8 per dettagli)
+
+|Parameter|value|
+|---|---|
+|Frame format|Motorola|
+|Data size|8 bit|
+|First bit|MSB first|	
+|CPOL|low|
+|CPHA|1 Edge|
+|CRC calculation|disabled|
+|NSS type|Output Sw|
+
+Ai pin della porta SPI assegnare i nomi:
+<ul>
+FLASH_SCK<br>
+FLASH_MISO<br>
+FLASH_MOSI<br>
+</ul>
+
+<br>
+Configura un altro pin come GPIO_Output:</b><br>
+
+|pinname to assign|output level|mode|pull-up/down|
+|---|---|---|---|
+|FLASH_CS|high|Output push pull|No pull-up/down|
+
+La velocità del pin ha effetti sulla velocità della porta SPI: aumenta (per gradi da LOW to VERY HIGH) la velocità dei pin se vedi che il uC non riesce a gestire la velocità di comunicazione assegnata (maggiori informazioni sul datasheet del tuo uC).<br>
 
 </li>
 <br>
@@ -140,8 +180,8 @@ Gli altri parametri secondo le esigenze del progetto (vedi https://youtu.be/_ds4
 <b>(2)	in CubeIDE</b>:<br>
 dopo aver salvato la configurazione CubeMX e generato il codice C:<br>
 <ul>
-copiare nella cartella "include" (core\inc) il file <i>z_qflash_W25QXXX.h</i><br>
-copiare nella cartella "source" (core\src) il file <i>z_qflash_W25QXXX.c</i><br>
+copiare nella cartella "include" (core\inc) il file <i>z_flash_W25QXXX.h</i><br>
+copiare nella cartella "source" (core\src) il file <i>z_flash_W25QXXX.c</i><br>
 </ul>
 </li>
 <br>
@@ -156,7 +196,7 @@ e modifica il segmento <i>/* USER CODE BEGIN Includes */</i> in questo modo:
 ...
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "z_qflash_W25QXXX.h"
+#include "z_flash_W25QXXX.h"
 /* USER CODE END Includes */
 ...
 ```
@@ -169,10 +209,10 @@ aprire il file <i>z_flash_W25QXXX.h</i> e modificare in questo modo:<br>
 <ul>
 <li>
 	nel segmento <b>STEP1</b>:<br>
-		indicare la porta SPI utilizzata<br>
+		indicare la porta SPI utilizzata aggiornando le due voci (hspi1/SPI1, hspi2/SPI2, ...)<br>
 <li>
 	nel segmento <b>STEP2</b>:<br>
-        specificare se si intende usare QuadSPI in Memory Mappd Mode o meno.<br>
+        non modificare: attualmente disponibile solo la modalità "Fast Mode"<br>
 <li>
     nel segmento <b>STEP3</b>:<br>
         non modificare: attualmente disponibile solo la modalità "Polling Mode"<br>
@@ -197,7 +237,7 @@ La libreria deve essere inizializzata: prima di entrare nel main loop devi chiam
 (main.c)
 ...
   /* USER CODE BEGIN 2 */
- 	if (QFlash_Init()!=HAL_OK) {};  // if Flash_Init() returns 0 (any flash error) do not proceed
+ 	if (!Flash_Init()) {};  // if Flash_Init() returns 0 (any flash error) do not proceed
   /* USER CODE END 2 */
 ...
 ```
