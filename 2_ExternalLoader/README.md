@@ -5,13 +5,12 @@ _**<br>Below the English text you'll find the Italian version</i>**_
 <br>
 
 # 2) Creating a <i>low-RAM-demanding</i> EXTERNAL LOADER for STM32CubeProgrammer and STM32CubeIDE
-External Loader is a plug-in for STM32CubeProgrammer allowing to read/write an external memory through an STM32 uC.<br>
-Through the library shown above it is possible to create an External Loader for an STM32 project having a Winbond external SPI Flash chip .<br>
-Next, you will see how you can use the same external loader program in STM32CubeIDE to program external Flash memory directly while creating a project: CubeIDE uses the CubeProgrammer modules to program uC internal and external flash memory.  
+External Loader is a plug-in for STM32CubeProgrammer/CubeIDE allowing to read/write an external memory through an STM32 uC.<br>
+Following the below instruction you can create an External Loader for an STM32 project having a Winbond external SPI Flash chip, adding it then to CubeProgrammer and CubeIDE.<br>
 
 ## "How to" create an External Loader for a specific project:
 <ul>
-Supposing you already defined the project configuration having an external flash memory (e.g. having defined the SPI port and CS pin and other details needed to communicate with Flash memory...)<br><br>
+After defining the CubeMX configuration details of your projectwith an external flash memory (e.g. having defined the SPI port and CS pin and the other details needed to communicate with Flash memory)<br><br>
 <li><b>Create a new project in CubeIDE</b>.<br>
 Give the project a name with this format:<br> 
 "external flash used"_"uC or board name"_"other info, if any, - e.g. SPI port, CS pin, etc."<br>
@@ -25,9 +24,9 @@ etc.<br>
 </ul>
 <li><b>in CubeMX</b>:
 <ul>
-<li> setup the <b>SPI port</b> and the <b>CS pin</b> for your flash memory. (see above details about SPI port configuration on CubeMX)<br>
+<li> setup the <b>SPI port</b> and the <b>CS pin</b> for your flash memory, as per your project.<br>
 <i><b>Warning:</b><br>
-if prototyping with a flash on a breakout board, I recommend you to setup the External Loader with an SPI port speed lower than 2Mbit/s</i><br>
+I always recommend to setup the External Loader with a low SPI port speed (e.g. lower than 2Mbit/s)</i><br>
 <li> enable <b>CRC</b> (you just need to set "Activated" checkbox)<br>
 <li> If on your board, you have available a led connected to a uC pin (GPIO_Output): you can use it in the External Loader. Useful for troubleshooting.<br>
 give the uC led pin the name: <b>LED</b>.<br>
@@ -109,7 +108,7 @@ in <i><b>project->properties->C/C++ Build->settings->Tool Setting->MCU GCC Linke
 
 
 > <br><em><b>PLEASE NOTE:</b><br> You don't need to unmark flag <i><b>Discard Unused Sections</b></i> in Project->Properties as indicated in my youtube video "[Part One](https://youtu.be/KlG2doCkREM)".<br>
-> Characteristics and needs of this library are described in "[Part Two](.)".<br>
+> Characteristics and needs of this library are described in "[Part Two](https://youtu.be/zv0w_vhTTTo)".<br>
 
 <br>
 
@@ -130,9 +129,18 @@ Opening STM32CubeProgrammer program you can select the new External Loader to ac
 </ul>
 
 ## "How to" add External Loader to STM32CubeIDE
-<br>
-see inside page "How to setup a TouchGFX project mapping an external flash memory"
-and "How to setup an STM32CubeIDE project mapping an external flash memory"
+<ul>
+<li>
+Go to the STM32Cubeide program folder<br> 
+(right-click the program icon and choose "open file location")
+<li>
+once in the STM32CubeProgrammer program folder go subfolder:
+<i>./plugins/xxxxxx.externaltools.cubeprogrammer.xxxxx/tools/bin/ExternalLoader</i><br>
+
+<li>
+copy here the External Loader created (.stldr file)<br><br>
+Now the External Loader is available to CubeIDE and can be selected in "Run/Debug Settings" in the project "Properties"<br>
+</ul>
 <br>
 <br>
 <br>
@@ -154,12 +162,12 @@ and "How to setup an STM32CubeIDE project mapping an external flash memory"
 
 # creare un EXTERNAL LOADER <i>a basso utilizzo di RAM</i> per STM32CubeProgrammer e STM32CubeIDE
 External Loader e' un plug-in per STM32CubeProgrammer per leggere e/o programmare un chip di memoria gestito attraverso da un uC STM32.<br>
-Attraverso la libreria di funzioni indicata sopra e' possibile creare un external loader per un progetto STM32 che ha una memoria SPI Flash Winbond esterna .<br>
+Attraverso la libreria di funzioni indicata sopra e' possibile creare un external loader per un progetto STM32 con una memoria SPI Flash Winbond esterna .<br>
 Lo stesso plugin puo' essere utilizzato in STM32CubeIDE per programmare la memoria Flash direttamente durante la creazione di un progetto: CubeIDE usa i moduli CubeProgrammer per programmare la memoria flash interna od esterna del uC.
 
 ## "How to" come creare an External Loader relativo ad un progetto:
 <ul>
-Ipotizzando che hai gia' creato la configurazione del progetto di memoria esterna (es. hai già definito la porta SPI ed il pin CS da usare per la comunicazione con la memoria Flash...)<br><br>
+Dopo aver definito i dettagli di configurazione CubeMX del tuo progetto con una memoria flash via SPI (es. hai già definito la porta SPI ed il pin CS da usare per la comunicazione con la memoria Flash).<br><br>
 <li><b>Crea un nuovo progetto in CubeIDE</b>.<br>
 Assegna al progetto un nome con questa forma:<br> 
 "external flash in uso"_"nome uC o board in uso"_"eventuali altre informazioni - es. Porta SPI, CS pin, ecc."<br>
@@ -175,7 +183,7 @@ ecc.<br>
 <ul>
 <li> configura una porta <b>SPI</b> ed il pin <b>CS</b> per la memoria flash (vedi sopra il dettaglio per la configurazione CubeMX)<br>
 <i><b>Attenzione:</b><br>
-se usato in prototipazione, per External Loader e' consigliabile configurare una velocià inferiore a 2Mbit/s</i><br>
+E' sempre consigliabile configurare una velocià ridotta in un External Loader (es. inferiore a 2Mbit/s)</i><br>
 <li> abilita <b>CRC</b> (devi solo spuntare "Activated")<br>
 <li> Se hai un led a disposizione sulla scheda, puoi usarlo nell'External Loader (utile nel troubleshooting)<br>
 dai al pin del led il nome: <b>LED</b> 
@@ -232,7 +240,7 @@ modificare <i><b>EL_linker.ld</b></i>
 <ul>
 <li>
 modificare la dimensione della memoria indicando la RAM disponibile sul uC:<br>
-alla riga 30 trovi il testo:<br>
+attorno alla riga 30 trovi il testo:<br>
 	
 ```sh
 (EL_linker.ld)
@@ -248,16 +256,12 @@ salvare
 in <i><b>project->properties->C/C++ Build->settings->Tool Setting->MCU GCC Linker->General->linker script</b></i>:
 <ul>
 1	cambiare il nome del file .ld in "EL_linker.ld": dovrebbe essere: ${workspace_loc:/${ProjName}/EL_linker.ld}<br>
-2	togliere flag da <i>Discard Unused Sections</i><br>
-3	cliccare "Apply and Close"<br>
+2	cliccare "Apply and Close"<br>
 </ul>
 </ul>
 </ul>
 </ul>
 <br>
-
-
-
 
 
 > <br><em><b>NOTA BENE:</b><br> Non hai bisogno di deselezionare il flag <i><b>Discard Unused Sections</b></i> in Project->Properties, come indicato nel mio video "[Prima Parte](https://youtu.be/KlG2doCkREM)".<br>
@@ -282,10 +286,18 @@ Aprendo STM32CubeProgrammer si puo' selezionare il nuovo External Loader per acc
 
 
 ## "How to" add External Loader to STM32CubeIDE
-<br>
-Vedi la pagina ""How to: come aggiungere un  External Loader a STM32CubeProgrammer"
-e ""How to: configurare un progetto STM32CubeIDE mappando una memoria flash esterna"
-<br><i><b>
+<ul>
+<li>
+Andare nel folder del programma STM32CubeIDE<br> 
+(ad esempio click-destro del mouse sull'icona del programma e scegliere "Apri percorso file")
+<li>
+Raggiunta la cartella di STM32CubeIDE, andare nella sottocartella:
+<i>./plugins/xxxxxx.externaltools.cubeprogrammer.xxxxx/tools/bin/ExternalLoader</i><br>
+<li>
+Copiare qui il file .stldr creato<br><br>
+Ora l'External Loader è disponibile in CubeIDE e puo' essere selezionato in "Run/Debug Settings" in Project->Properties<br>
+</ul>
+
 <br>
 
 [Torna alla home page](../.)
