@@ -141,7 +141,7 @@ Qui puoi trovare video relativi ai temi trattati in questa pagina:
 ||||
 |---|---|---|
 |Prima parte|"how to" - come usare la libreria, come creare un EL, come installare un EL in Cubeprogrammer|https://youtu.be/KlG2doCkREM|
-|<b>Seconda parte</br>|<br>"how to" - creare EL a basso consumo di RAM (video specifico per questa repository)</b>|https://youtu.be/zv0w_vhTTTo|
+|<b>Seconda parte</br>|<b>"how to" - creare EL a basso consumo di RAM (video specifico per questa repository)</b>|https://youtu.be/zv0w_vhTTTo|
 |Terza parte|"how to" - come usare la memoria FLash SPI in un progetto TouchGFX, come installare un EL in CubeIDE per programmare la memoria flash in un progetto TouchGFX|https://youtu.be/PO_2ZE1NQF0|
 |Quarta parte|"how to" - come mappare una memoria flash SPI in un progetto CubeIDE|https://youtu.be/K-7X8WKNu7c|
 
@@ -166,10 +166,10 @@ Il software, questa pagina ed i video sopra sono stati sviluppati sulla base di 
 
 ---
 > Il software e gli schemi di progetto come i layout PCB in questa serie di repository 
-> sono messe a disposizione con puro intento illustrativo e di condivisione dell'esperienza fatta
-> Il software and gli elementi del progetto sono messi a disposizione "allo stato in cui sono"
+> sono messe a disposizione con puro intento illustrativo e di condivisione dell'esperienza fatta.
+> Il software e gli elementi del progetto sono messi a disposizione "allo stato in cui sono"
 > senza impegno di manutenzione e senza garanzie di alcun tipo. Piu' esplicitamente, non c'e' garanzia di 
-> adeguatezza a soddisfare specifiche esigenze, ne di completezza o correttezza di alcuna parte.
+> adeguatezza a soddisfare specifiche esigenze, ne' di completezza o correttezza di alcuna parte.
 > Scaricando ed utilizzando questo materiale l'utilizzatore accetta il rischio associato all'esecuzione del programma e alla
 > realizzazione ed all'utilizzo del circuito e dei componenti descritti in questo archivio.
 
