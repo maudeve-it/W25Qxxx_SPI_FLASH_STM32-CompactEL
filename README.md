@@ -25,7 +25,7 @@ So, you can use this software for 4 distinct purposes:
 
 <br>
 
-## GitHub Folders
+### GitHub Folders
 
 This guide is divided in 4 chapters following the above list.<br><br>
 
@@ -75,7 +75,8 @@ The  sofware you find on this page, the page content and above videos, were deve
 <br>
 
 
-## NOTES
+## Please note
+---
 > The software, schemes and PCB designs in this set of repositories are provided just for 
 > illustrative purposes, sharing the personal experience on this project. 
 > The software and design artifacts are provided as-is without any mantainence and without
@@ -113,8 +114,8 @@ Puoi utilizzare quindi questo software per 4 scopi distinti:
 ---
 
 <br>
-## Folder GitHub
 
+### Folder GitHub
 Questa guida è suddivisa in 4 capitoli seguendo lo schema sopra.<br><br>
 - [gestire una memoria flash W25Q attraverso questa libreria](./1_Flash_library)
 - [creare and usare an External Loader per le memorie flash SPI](./2_ExternalLoader)
@@ -164,7 +165,10 @@ Il software, questa pagina ed i video sopra sono stati sviluppati sulla base di 
 <br>
 
 
+## Nota bene
+
 ---
+
 > Il software e gli schemi di progetto come i layout PCB in questa serie di repository 
 > sono messe a disposizione con puro intento illustrativo e di condivisione dell'esperienza fatta.
 > Il software e gli elementi del progetto sono messi a disposizione "allo stato in cui sono"
