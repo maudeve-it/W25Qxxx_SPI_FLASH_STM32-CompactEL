@@ -105,9 +105,9 @@ in <i><b>project->properties->C/C++ Build->settings->Tool Setting->MCU GCC Linke
 </ul>
 </ul>
 <br>
+<br>
 
-
-> <br><em><b>FOR YOUR INFORMATION:</b>You don't need to unmark flag <i><b>Discard Unused Sections</b></i> in Project->Properties as indicated in my youtube video "[Part One](https://youtu.be/KlG2doCkREM)".<br>
+> <em><b>FOR YOUR INFORMATION:</b> You don't need to unmark flag <i><b>Discard Unused Sections</b></i> in Project->Properties as indicated in my youtube video "[Part One](https://youtu.be/KlG2doCkREM)".<br>
 > Characteristics and needs of this library are described in "[Part Two](https://youtu.be/zv0w_vhTTTo)".</em><br>
 
 <br>
@@ -262,10 +262,10 @@ in <i><b>project->properties->C/C++ Build->settings->Tool Setting->MCU GCC Linke
 </ul>
 </ul>
 <br>
+<br>
 
-
-> <br><em><b>PER INFORMAZIONE:</b><br> Non hai bisogno di deselezionare il flag <i><b>Discard Unused Sections</b></i> in Project->Properties, come indicato nel mio video "[Prima Parte](https://youtu.be/KlG2doCkREM)".<br>
-> Le caratteristiche e le necessità di questa libreria sono descritte in "[Terza Seconda](.)".<br>
+> <em><b>PER INFORMAZIONE:</b><br> Non hai bisogno di deselezionare il flag <i><b>Discard Unused Sections</b></i> in Project->Properties, come indicato nel mio video "[Prima Parte](https://youtu.be/KlG2doCkREM)".<br>
+> Le caratteristiche e le necessità di questa libreria sono descritte in "[Terza Seconda](https://youtu.be/zv0w_vhTTTo)".<br>
 
 <br>
 
