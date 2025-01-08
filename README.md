@@ -83,7 +83,7 @@ The  sofware you find on this page, the page content and above videos, were deve
 > warranty of any kind. There is no guarantee of fitness for any particular application, 
 > and no guarantee of completeness and correctness. 
 > By downloading and using these materials the user accepts all risks associated with the
-> run of the software and construction and use of the circuits and devices described.<br>
+> run of the software and construction and use of the circuits, boards and devices described.<br>
 
 ---
 
