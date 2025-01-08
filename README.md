@@ -75,7 +75,7 @@ The  sofware you find on this page, the page content and above videos, were deve
 <br>
 
 
-## Please note
+### Please note
 ---
 > The software, schemes and PCB designs in this set of repositories are provided just for 
 > illustrative purposes, sharing the personal experience on this project. 
@@ -165,7 +165,7 @@ Il software, questa pagina ed i video sopra sono stati sviluppati sulla base di 
 <br>
 
 
-## Nota bene
+### Nota bene
 
 ---
 
