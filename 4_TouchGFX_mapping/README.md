@@ -167,8 +167,6 @@ From now on, when you are in <b>TouchGFX Designer</b>, you can move single pictu
 <br>
 <img src="./Senzanome.png">
 <br>
-</ul>
-
 <br>
 
 ---
